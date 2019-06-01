@@ -23,7 +23,12 @@ const blog = 'https://joshpress.net';
 
 
 export default props => (
-	<Box>
+	<Box
+		css={{
+			width: '100%',
+
+		}}
+	>
 		<Banner>
 			<Flex px={3} py={2}>
 				<Box mx="auto" />

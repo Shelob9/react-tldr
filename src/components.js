@@ -92,6 +92,7 @@ export const Banner = props =>
         color='white'
         bg={black}
         css={{
+            display: 'flex',
             backgroundSize: 'cover',
             backgroundImage: gradient
         }}
