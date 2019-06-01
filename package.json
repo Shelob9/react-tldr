@@ -18,5 +18,8 @@
   },
   "devDependencies": {
     "prettier": "1.17.1"
+  },
+  "mdx-go": {
+    "outDir": "docs"
   }
 }
