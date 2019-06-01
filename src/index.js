@@ -14,9 +14,9 @@ import {
 	H3,
 	Divider,
 	ExternalLink,
+	CatLogo,
 	theme
 } from './components';
-import Logo from './logo';
 export { Root } from './components';
 
 export const name = 'Home';
@@ -36,7 +36,7 @@ export default props => (
 			<Flex px={3} py={2}>
 				<Box mx="auto" />
 				<Link
-					href="/sections/zero"
+					href="/sections"
 					fontSize={1}
 					px={3}
 					py={2}
@@ -57,11 +57,11 @@ export default props => (
 				}}
 			>
 				<Box px={3} width={[1, null, 1 / 3, 1 / 3]}>
-					<Logo size={96} />
+					<CatLogo size={96} />
 					<Title mb={2} color={theme.colors.blue}> React TL;DR</Title>
 					<Text mb={3}>Josh's React Cheat sheets and such</Text>
-					<Button mr={3} href="/docs">
-						Docs
+					<Button mr={3} href="/sections">
+						Start
 					</Button>
 					<ButtonOutline href={github}>GitHub</ButtonOutline>
 				</Box>

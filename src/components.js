@@ -6,7 +6,6 @@ import {
 } from 'mdx-go'
 import {Box, Flex} from 'rebass'
 import Sidepane from 'sidepane'
-import Logo from './logo';
 import {nav} from './nav';
 import {Menu} from "./Menu";
 
@@ -54,7 +53,7 @@ const PageLayout = props => props.location.pathname === '/'
                 bg={theme.colors.darkgreen}>
                 <Box px={3} py={3}>
                     <GoLink href='/'>
-                        <Logo size={48}/>
+                        <CatLogo size={48} width={128}/>
                     </GoLink>
                 </Box>
                 <Menu nav={nav}/>
@@ -111,6 +110,20 @@ export const Link = props =>
         as={GoLink}
         style={linkStyle(props)}
     />
+export const CatLogo = props =>{
+    const height = props.height? props.height : props.size? props.size : 36;
+    const width= props.width? props.width : props.size? props.size : 36;
+
+    return (
+        <Box
+            {...props}
+            as={'img'}
+            src={`https://placekitten.com/${width}/${height}`}
+
+        />
+
+    )
+};
 
 
 export const ExternalLink = props =>

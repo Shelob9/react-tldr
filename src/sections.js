@@ -4,15 +4,15 @@ import {
     Title,
     Divider,
     Container,
-} from '../components';
-import {componentsSection} from "../nav";
-import {Menu} from "../Menu";
+} from './components';
+import {sections} from "./nav";
+import {Menu} from "./Menu";
 
 
 export default props => (
     <Container>
-        <Title>React Components</Title>
+        <Title>All Sections</Title>
         <Divider />
-        <Menu nav={componentsSection} dark={true}/>
+        <Menu nav={sections} dark={true}/>
     </Container>
 );

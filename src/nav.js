@@ -20,7 +20,7 @@ export const sections = [
 export const nav = [
 	{ path: '/', name: 'Home' },
 	{
-		path: '/sections/zero',
+		path: '/sections',
 		name: 'Sections',
         children: sections
 	},

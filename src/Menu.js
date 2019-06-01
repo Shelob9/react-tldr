@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react'
 import {Link as GoLink} from "mdx-go";
 import {Box} from "rebass";
-
+import {theme} from "./components";
 
 function SingleMenuItem(path, name, goLinkStyle) {
     return <GoLink
@@ -15,70 +15,74 @@ function SingleMenuItem(path, name, goLinkStyle) {
 function MenuSection({children}){
     return <Box ml={1}>{children}</Box>
 }
-export const Menu = ({nav, goLinkStyle}) => (
-    <Fragment>
-        {nav.map(({name, path, children}) => {
-            if (!children) {
+export const Menu = ({nav, goLinkStyle,dark,c}) => {
+    console.log(c);
+    const linkStyle = {...goLinkStyle, color: dark ? theme.colors.darkgreen : theme.colors.white };
+    return(
+        <Fragment>
+            {nav.map(({name, path, children}) => {
+                if (!children) {
+                    return (
+                        <GoLink
+                            key={path}
+                            href={path}
+                            children={name}
+                            style={linkStyle}
+                        />
+                    )
+                }
                 return (
-                    <GoLink
-                        key={path}
-                        href={path}
-                        children={name}
-                        style={goLinkStyle}
-                    />
-                )
-            }
-            return (
-                <MenuSection key={path}>
-                    {SingleMenuItem(path, name, goLinkStyle)}
-                    {children.map(({name, path, children}) => {
-                        return (
-                            <MenuSection key={path}>
-                                <GoLink
-                                    key={path}
-                                    href={path}
-                                    children={name}
-                                    style={{
-                                        ...goLinkStyle,
-                                        paddingLeft: goLinkStyle.paddingLeft + 8
-                                    }}
-                                />
-                                {children &&
-                                <Fragment>
-                                    {children.map(item => {
-                                        const name = item.name;
-                                        const itemPath = path + item.path;
-                                        return (
-                                            <GoLink
-                                                key={itemPath}
-                                                href={itemPath}
-                                                children={name}
-                                                style={{
-                                                    ...goLinkStyle,
-                                                    paddingLeft: goLinkStyle.paddingLeft + 20
-                                                }}
-                                            />
-                                        );
-                                    })}
-                                </Fragment>
-                                }
-                                <Box
-                                    as='hr'
-                                    ml={1}
-                                    css={{
-                                        border: 0,
-                                    }}
-                                />
-                            </MenuSection>
+                    <MenuSection key={path}>
+                        {SingleMenuItem(path, name, goLinkStyle)}
+                        {children.map(({name, path, children}) => {
+                            return (
+                                <MenuSection key={path}>
+                                    <GoLink
+                                        key={path}
+                                        href={path}
+                                        children={name}
+                                        style={{
+                                            ...linkStyle,
+                                            paddingLeft: goLinkStyle.paddingLeft + 8
+                                        }}
+                                    />
+                                    {children &&
+                                    <Fragment>
+                                        {children.map(item => {
+                                            const name = item.name;
+                                            const itemPath = path + item.path;
+                                            return (
+                                                <GoLink
+                                                    key={itemPath}
+                                                    href={itemPath}
+                                                    children={name}
+                                                    style={{
+                                                        ...linkStyle,
+                                                        paddingLeft: goLinkStyle.paddingLeft + 20
+                                                    }}
+                                                />
+                                            );
+                                        })}
+                                    </Fragment>
+                                    }
+                                    <Box
+                                        as='hr'
+                                        ml={1}
+                                        css={{
+                                            border: 0,
+                                        }}
+                                    />
+                                </MenuSection>
 
-                        )
-                    })
-                    }
-                </MenuSection>
-            )
-        })}
-    </Fragment>
-);
+                            )
+                        })
+                        }
+                    </MenuSection>
+                )
+            })}
+        </Fragment>
+    );
+}
 
 Menu.defaultProps = {
     goLinkStyle: {
