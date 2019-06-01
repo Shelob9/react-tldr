@@ -6,7 +6,7 @@
   "private": false,
   "scripts": {
     "start": "mdx-go src",
-    "build": "mdx-go build src",
+    "build": "mdx-go build src --out-dir=docs",
     "format": "prettier  --write src/**/*.js"
   },
   "dependencies": {
