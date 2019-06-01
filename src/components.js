@@ -6,7 +6,8 @@ import {
 } from 'mdx-go'
 import {Box, Flex} from 'rebass'
 import Sidepane from 'sidepane'
-import Logo from './logo'
+import Logo from './logo';
+import {nav} from './nav';
 
 const green = '#0d3'
 const darkgreen = '#0a6'
@@ -25,15 +26,7 @@ linear-gradient(
 )
 `
 
-const nav = [
-    {path: '/', name: 'Home'},
-    {
-        path: '/sections/zero', name: 'Sections', children: [
-            {path: '/sections/context', name: 'Context'}
-        ]
-    },
 
-]
 
 // todo: update
 const theme = {
