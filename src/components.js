@@ -44,18 +44,6 @@ const theme = {
     }
 }
 
-const goLinkStyle = {
-    display: 'block',
-    fontWeight: 'bold',
-    fontSize: 14,
-    textDecoration: 'none',
-    paddingLeft: 16,
-    paddingRight: 16,
-    paddingTop: 4,
-    paddingBottom: 4,
-    color: 'inherit',
-};
-
 
 const PageLayout = props => props.location.pathname === '/'
     ? props.children
@@ -68,7 +56,7 @@ const PageLayout = props => props.location.pathname === '/'
                         <Logo size={48}/>
                     </GoLink>
                 </Box>
-                <Menu nav={nav} goLinkStyle={goLinkStyle}/>
+                <Menu nav={nav} />
 
             <Box py={4}/>
             </Sidepane>

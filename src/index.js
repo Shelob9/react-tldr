@@ -21,20 +21,6 @@ export const name = 'Home';
 const github = 'https://github.com/shelob9/react-tldr';
 const blog = 'https://joshpress.net';
 
-const intro = (
-	<span>
-		MDX Go is built with the idea of{' '}
-		<Link href={blog} color="#0a0">
-			Progressive Documentation
-		</Link>{' '}
-		in mind, intended to be used anywhere as a dev server, prototyping tool,
-		or simple static site generator. By embracing the MDX file format, the
-		docs you create with MDX Go can easily be used in other tools. Start
-		your docs with MDX Go, and migrated to tools like Next.js and Gatsby
-		when needed. You can even keep MDX Go around to use as a dev tool
-		outside of other React applications.
-	</span>
-);
 
 export default props => (
 	<Box>

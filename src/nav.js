@@ -7,7 +7,7 @@ export const sections = [
     { path: '/sections/general', name: 'General' },
     { path: '/sections/jsx', name: 'JSX' },
     { path: '/sections/type-checking', name: 'TypeChecking',children: typeCheckingSections },
-]
+];
 
 export const nav = [
 	{ path: '/', name: 'Home' },
