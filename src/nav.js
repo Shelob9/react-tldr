@@ -16,4 +16,7 @@ export const nav = [
 		name: 'Sections',
         children: sections
 	},
+    { path: 'https://github.com/shelob9/react-tldr', name: 'Github'},
+    { path: 'https://joshpress.net', name: 'Josh'}
+
 ];
