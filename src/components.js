@@ -72,16 +72,16 @@ const PageLayout = props => props.location.pathname === '/'
 export const Root = props =>
     <React.Fragment>
         <Head>
-            <title>MDX Go</title>
-            <meta name='description' content='Lightning-fast MDX-based dev server'/>
+            <title>React TL;DR</title>
+            <meta name='description' content='Short Summaries Of How React Works'/>
             <meta name='twitter:card' content='summary_large_image'/>
-            <meta name='twitter:site' content='@jxnblk'/>
-            <meta name='twitter:title' content='MDX Go'/>
+            <meta name='twitter:site' content='@josh412'/>
+            <meta name='twitter:title' content='React TL;DR'/>
             <meta name='twitter:description'
-                  content='Lightning-fast MDX-based dev server for progressive documentation'/>
+                  content='React, less prose, more codes.'/>
             <meta name='twitter:image' content='https://jxnblk.com/mdx-go/card.png'/>
         </Head>
-        <StyleProvider color='tomato'>
+        <StyleProvider color={theme.lightgray}>
             <PageLayout {...props} />
         </StyleProvider>
     </React.Fragment>
