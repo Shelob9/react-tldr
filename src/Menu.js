@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react'
 import {Link as GoLink} from "mdx-go";
-import {Divider} from "./components";
 import {Box} from "rebass";
+
 
 function SingleMenuItem(path, name, goLinkStyle) {
     return <GoLink
@@ -29,11 +29,11 @@ export const Menu = ({nav, goLinkStyle}) => (
                 )
             }
             return (
-                <MenuSection>
+                <MenuSection key={path}>
                     {SingleMenuItem(path, name, goLinkStyle)}
                     {children.map(({name, path, children}) => {
                         return (
-                            <MenuSection>
+                            <MenuSection key={path}>
                                 <GoLink
                                     key={path}
                                     href={path}
@@ -90,6 +90,6 @@ Menu.defaultProps = {
         paddingRight: 16,
         paddingTop: 4,
         paddingBottom: 4,
-        color: 'inherit',
+        color: 'white'
     }
 }

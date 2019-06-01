@@ -10,11 +10,12 @@ import Logo from './logo';
 import {nav} from './nav';
 import {Menu} from "./Menu";
 
-const green = '#0d3'
-const darkgreen = '#0a6'
-const black = '#000619'
-const lightgray = '#f6f6ff'
-const blue = '#07c'
+const white = '#C4CAD2';
+const green = '#949EB0';
+const darkgreen = '#504935';
+const black = '#1E2010';
+const lightgray = '#949EB0';
+const blue = '#4C7CAC';
 
 const gradient = `
 linear-gradient(
@@ -27,9 +28,9 @@ linear-gradient(
 `
 
 
-// todo: update
-const theme = {
+export const theme = {
     colors: {
+        white,
         lightgray,
         black,
         blue,
@@ -50,15 +51,15 @@ const PageLayout = props => props.location.pathname === '/'
     : (
         <Flex>
             <Sidepane
-                bg='#f6f6ff'>
+                bg={theme.colors.darkgreen}>
                 <Box px={3} py={3}>
                     <GoLink href='/'>
                         <Logo size={48}/>
                     </GoLink>
                 </Box>
-                <Menu nav={nav} />
+                <Menu nav={nav}/>
 
-            <Box py={4}/>
+                <Box py={4}/>
             </Sidepane>
             <Box width={1}>
                 <Container maxWidth='768px' py={5}>
@@ -86,11 +87,48 @@ export const Root = props =>
     </React.Fragment>
 
 
+function linkColorProp(props) {
+    return props.hasOwnProperty('light') ? theme.colors.white : theme.colors.black;
+}
+
+function linkStyle(props){
+    return {
+        display: 'inline-block',
+        color: linkColorProp(props),
+        textDecoration: 'none',
+        underline: `1px solid ${theme.colors.lightgray}`,
+        fontWeight: 600,
+        '&:hover': {
+            color: theme.colors.blue
+        }
+    }
+
+};
+
+export const Link = props =>
+    <Box
+        {...props}
+        as={GoLink}
+        style={linkStyle(props)}
+    />
+
+
+export const ExternalLink = props =>
+    <Box
+        {...props}
+        as={'a'}
+        href={props.href}
+        style={linkStyle(props)}
+
+    >
+        {props.children}
+    </Box>
+
 export const Banner = props =>
     <Box
         {...props}
-        color='white'
-        bg={black}
+        color={theme.colors.white}
+        bg={theme.colors.black}
         css={{
             display: 'flex',
             backgroundSize: 'cover',
@@ -104,10 +142,61 @@ export const Title = props =>
         as='h1'
         m={0}
         fontSize={[6, 7]}
-        css={{
-            fontWeight: 600
+        style={{
+            fontWeight: 600,
+            color: props.color ? props.color : 'inherit'
         }}
     />
+
+export const H2 = props =>
+    <Box
+        {...props}
+        as='h2'
+        m={0}
+        fontSize={[5, 6]}
+        css={{
+            fontWeight: 500
+        }}
+    />
+
+export const H3 = props =>
+    <Box
+        {...props}
+        as='h3'
+        m={0}
+        fontSize={[2, 4]}
+        css={{
+            fontWeight: 300
+        }}
+    />
+
+
+export const LinkList = props => {
+    const {items} = props;
+    return (
+        <Box
+            {...props}
+            as='ul'
+            m={0}
+        >
+            {items.map(item => (
+                <Box
+                    as='li'
+                    key={item.href}
+                    m={0}
+                >
+                    <ExternalLink
+                        href={item.href}
+                        m={0}
+                    >
+                        {item.text}
+                    </ExternalLink>
+                </Box>
+            ))}
+        </Box>
+    );
+}
+
 
 export const Text = props =>
     <Box
@@ -119,6 +208,7 @@ export const Text = props =>
         }}
     />
 
+
 export const Button = props =>
     <Box
         as={GoLink}
@@ -126,7 +216,7 @@ export const Button = props =>
         py={3}
         fontSize={2}
         color={black}
-        bg={green}
+        bg={blue}
         {...props}
         css={{
             display: 'inline-block',
@@ -168,20 +258,6 @@ export const Col = props =>
         width={[1, 1 / 2,]}
     />
 
-export const Link = props =>
-    <Box
-        {...props}
-        as={GoLink}
-        css={{
-            display: 'inline-block',
-            color: 'inherit',
-            textDecoration: 'none',
-            fontWeight: 600,
-            '&:hover': {
-                color: green
-            }
-        }}
-    />
 
 export const Pre = props =>
     <Box

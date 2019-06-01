@@ -6,15 +6,14 @@ import {
     Divider,
     Container,
 } from '../components';
-import {typeCheckingSections} from "../nav";
+import {componentsSection} from "../nav";
 import {Menu} from "../Menu";
 
 
 export default props => (
     <Container>
-        <Title>Type Checking</Title>
-        <Text>Articles About Type Checking</Text>
+        <Title>React Components</Title>
         <Divider />
-        <Menu nav={typeCheckingSections} />
+        <Menu nav={componentsSection} />
     </Container>
 );
