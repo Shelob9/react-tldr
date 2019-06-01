@@ -1,4 +1,3 @@
-
 # Typechecking With Prop Types
 
 * https://reactjs.org/docs/typechecking-with-proptypes.html

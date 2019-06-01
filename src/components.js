@@ -8,13 +8,13 @@ import {Box, Flex} from 'rebass'
 import Sidepane from 'sidepane'
 import Logo from './logo';
 import {nav} from './nav';
+import {Menu} from "./Menu";
 
 const green = '#0d3'
 const darkgreen = '#0a6'
 const black = '#000619'
 const lightgray = '#f6f6ff'
 const blue = '#07c'
-
 
 const gradient = `
 linear-gradient(
@@ -25,7 +25,6 @@ linear-gradient(
   rgba(0, 191, 0, 0.5) 95%
 )
 `
-
 
 
 // todo: update
@@ -57,6 +56,7 @@ const goLinkStyle = {
     color: 'inherit',
 };
 
+
 const PageLayout = props => props.location.pathname === '/'
     ? props.children
     : (
@@ -68,54 +68,9 @@ const PageLayout = props => props.location.pathname === '/'
                         <Logo size={48}/>
                     </GoLink>
                 </Box>
-                {nav.map(({name, path, children}) => {
-                    if (!children) {
-                        return (
-                            <GoLink
-                                key={path}
-                                href={path}
-                                children={name}
-                                style={goLinkStyle}
-                            />
-                        )
-                    }
-                    return (
-                        <Fragment>
-                            <GoLink
-                                key={path}
-                                href={path}
-                                children={name}
-                                style={goLinkStyle}
-                            />
-                            {children.map(({name, path}) => (
-                                    <GoLink
-                                        key={path}
-                                        href={path}
-                                        children={name}
-                                        style={{
-                                            ...goLinkStyle,
-                                            paddingLeft: 24
-                                        }}
-                                    />
-                                )
-                            )}
-                        </Fragment>
-                    )
-                })}
-                {/*
-        <NavLinks
-          {...props}
-          filter={route => nav.includes(route.name)}
-          order={nav}
-          py={2}
-        />
-        <Box py={2} />
-        <NavLink
-          href='https://github.com/jxnblk/mdx-go'
-          children='GitHub'
-        />
-        */}
-                <Box py={4}/>
+                <Menu nav={nav} goLinkStyle={goLinkStyle}/>
+
+            <Box py={4}/>
             </Sidepane>
             <Box width={1}>
                 <Container maxWidth='768px' py={5}>

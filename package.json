@@ -8,13 +8,17 @@
     "start": "mdx-go src",
     "build": "mdx-go build src",
     "logo": "npx repng src/logo.js -w 256 -h 256 -d src -f logo.png",
-    "card": "npx repng src/card.js -w 1024 -h 512 -d src -f card.png"
+    "card": "npx repng src/card.js -w 1024 -h 512 -d src -f card.png",
+    "format": "prettier  --write src/**/*.js"
   },
   "dependencies": {
+    "mdx-go": "^2.0.0-25",
     "react": "^16.5.2",
     "rebass": "^3.0.0-9",
     "sidepane": "^1.0.0-4",
-    "styled-components": "^4.0.0-beta.10",
-    "mdx-go": "^2.0.0-25"
+    "styled-components": "^4.0.0-beta.10"
+  },
+  "devDependencies": {
+    "prettier": "1.17.1"
   }
 }
