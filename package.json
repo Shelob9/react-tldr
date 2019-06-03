@@ -6,10 +6,13 @@
   "private": false,
   "scripts": {
     "start": "mdx-go src",
+    "start:server": "nodemon server/server.js",
     "build": "mdx-go build src --out-dir=docs",
     "format": "prettier  --write src/**/*.js"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
     "mdx-go": "^2.0.0-25",
     "react": "^16.5.2",
     "rebass": "^3.0.0-9",
@@ -17,6 +20,7 @@
     "styled-components": "^4.0.0-beta.10"
   },
   "devDependencies": {
+    "nodemon": "^1.19.1",
     "prettier": "1.17.1"
   },
   "mdx-go": {
