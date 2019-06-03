@@ -1,14 +1,16 @@
 {
   "version": 2,
+  "name": "react-tldr",
   "builds": [
-    { "src": "docs/**/*.html", "use": "@now/static" },
-    { "src": "docs/**/*.js", "use": "@now/node" }
+    { "src": "docs/**/*", "use": "@now/static" },
+    { "src": "server/**/*.js", "use": "@now/node" }
   ],
   "routes": [
     { "src": "/", "dest": "docs/index.html" },
-    { "src": "/docs", "dest": "docs/components/index.html" },
-    { "src": "/sections/(.*)/(.*)", "dest": "docs/sections/$1/$2/index.html"},
-    { "src": "/sections/(.*)", "dest": "docs/sections/$1/index.html" },
-    { "src": "/sections", "dest": "docs/sections/index.html" }
+    {
+      "src": "/sections/(.*)",
+      "status": 301,
+      "headers": { "Location": "/docs/sections/$1/index.html" }
+    }
   ]
 }

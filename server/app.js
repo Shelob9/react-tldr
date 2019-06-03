@@ -24,6 +24,4 @@ const html = mdxRouter(process.env.HTML_DIR);
 app.use(html);
 
 
-module.exports = {
-    app
-};
+module.exports = app;
