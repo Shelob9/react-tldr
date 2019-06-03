@@ -7,24 +7,22 @@ const app = express();
 const jsonParser = bodyParser.json();
 
 // create application/x-www-form-urlencoded parser
-const urlencodedParser = bodyParser.urlencoded({ extended: false });
+const urlencodedParser = bodyParser.urlencoded({extended: false});
 
-// POST /login gets urlencoded bodies
-app.post('/login', urlencodedParser,  (req, res) => {
-    res.send('welcome, ' + req.body.username)
-});
+/**
+ * Router for api
+ */
+const {apiRouter, apiV1Router} = require('./routers/apiRouter');
+app.use('/api/', apiRouter({jsonParser}));
+app.use('/api/v1', apiV1Router({jsonParser}));
 
-// POST /api/users gets JSON bodies
-app.post('/api/users', jsonParser,  (req, res) => {
-    // create user in req.body
-});
+/**
+ * Router for mdx-go created HTML
+ */
+const {mdxRouter} = require('./routers/mdxRouter');
+const html = mdxRouter(process.env.HTML_DIR);
+app.use(html);
 
-//GET root
-app.get('/',jsonParser,(req, res) => {
-    res.send({
-        hi: req.query.hasOwnProperty('hi' ) ? req.query.hi : 'Roy',
-    });
-});
 
 module.exports = {
     app

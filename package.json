@@ -6,12 +6,14 @@
   "private": false,
   "scripts": {
     "start": "mdx-go src",
-    "start:server": "nodemon server/server.js",
+    "start:--server": "node bin/www",
+    "start:server": "cross-env HTML_DIR=docs nodemon server/server.js",
     "build": "mdx-go build src --out-dir=docs",
     "format": "prettier  --write src/**/*.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cross-env": "^5.2.0",
     "express": "^4.17.1",
     "mdx-go": "^2.0.0-25",
     "react": "^16.5.2",
