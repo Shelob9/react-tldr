@@ -58,7 +58,7 @@ export default props => (
 			>
 				<Box px={3} width={[1, null, 1 / 3, 1 / 3]}>
 					<CatLogo size={96} />
-					<Title mb={2} color={theme.colors.blue}> React TL;DR</Title>
+					<Title mb={2} color={theme.colors.primary}> React TL;DR</Title>
 					<Text mb={3}>Josh's React Cheat sheets and such</Text>
 					<Button mr={3} href="/sections">
 						Start

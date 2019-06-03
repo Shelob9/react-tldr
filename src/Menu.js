@@ -17,7 +17,7 @@ function MenuSection({children}){
 }
 export const Menu = ({nav, goLinkStyle,dark,c}) => {
     console.log(c);
-    const linkStyle = {...goLinkStyle, color: dark ? theme.colors.darkgreen : theme.colors.white };
+    const linkStyle = {...goLinkStyle, color: dark ? theme.colors.primaryCompliment : theme.colors.white };
     return(
         <Fragment>
             {nav.map(({name, path, children}) => {

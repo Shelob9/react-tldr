@@ -32,17 +32,18 @@ export const theme = {
         white,
         lightgray,
         black,
-        blue,
-        green,
-        darkgreen,
+        primary: blue,
+        secondary: green,
+        primaryCompliment: darkgreen,
+        secondaryCompliment: '',
     },
     code: {
         color: darkgreen
     },
     pre: {
-        // color: darkgreen
+        // color: primaryCompliment
     }
-}
+};
 
 
 const PageLayout = props => props.location.pathname === '/'
@@ -50,7 +51,7 @@ const PageLayout = props => props.location.pathname === '/'
     : (
         <Flex>
             <Sidepane
-                bg={theme.colors.darkgreen}>
+                bg={theme.colors.primaryCompliment}>
                 <Box px={3} py={3}>
                     <GoLink href='/'>
                         <CatLogo size={48} width={128}/>
@@ -98,7 +99,7 @@ function linkStyle(props){
         underline: `1px solid ${theme.colors.lightgray}`,
         fontWeight: 600,
         '&:hover': {
-            color: theme.colors.blue
+            color: theme.colors.primary
         }
     }
 
