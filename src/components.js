@@ -9,12 +9,7 @@ import Sidepane from 'sidepane'
 import {nav} from './nav';
 import {Menu} from "./Menu";
 
-const white = '#C4CAD2';
-const green = '#949EB0';
-const darkgreen = '#504935';
-const black = '#1E2010';
-const lightgray = '#949EB0';
-const blue = '#4C7CAC';
+
 
 const gradient = `
 linear-gradient(
@@ -25,40 +20,86 @@ linear-gradient(
   rgba(0, 191, 0, 0.5) 95%
 )
 `
+const ColorScheme = require('color-scheme');
+const scheme = new ColorScheme;
+const primary = '007fff';
+const themeScheme = scheme
+    .from_hex(primary)
+    .scheme('analogic');
 
+const themeColors = themeScheme.colors();
+
+const white = '#C4CAD2';
+const green = '#949EB0';
+const black = '#1E2010';
+const lightgray = '#949EB0';
+
+const colorPalette = {
+    white,
+    lightgray,
+    black,
+    primary: '#'+ primary,
+    highlight: '#'+ themeColors[1],
+    lighter: '#' + themeColors[2],
+    accent: '#' +  themeColors[3],
+}
 
 export const theme = {
-    colors: {
-        white,
-        lightgray,
-        black,
-        primary: blue,
-        secondary: green,
-        primaryCompliment: darkgreen,
-        secondaryCompliment: '',
-    },
+    colors:colorPalette,
     code: {
-        color: darkgreen
+        color: colorPalette.highlight
     },
     pre: {
-        // color: primaryCompliment
+        color: colorPalette.highlight
     }
 };
 
+export const Colors = () => (
+    <div>
+        <span
+            style={{
+                backgroundColor: colorPalette.primary
+            }}
+        >
+            Primary Color
+        </span>
+        <span
+            style={{
+                backgroundColor: colorPalette.highlight
+            }}
+        >
+            Highlight Color
+        </span>
+        <span
+            style={{
+                backgroundColor: colorPalette.lighter
+            }}
+        >
+            Lighter Color
+        </span>
+        <span
+            style={{
+                backgroundColor: colorPalette.accent
+            }}
+        >
+            Accent
+        </span>
+    </div>
+)
 
 const PageLayout = props => props.location.pathname === '/'
     ? props.children
     : (
         <Flex>
             <Sidepane
-                bg={theme.colors.primaryCompliment}>
+                bg={theme.colors.primary}>
                 <Box px={3} py={3}>
                     <GoLink href='/'>
                         <CatLogo size={48} width={128}/>
                     </GoLink>
                 </Box>
-                <Menu nav={nav}/>
 
+                <Menu nav={nav}/>
                 <Box py={4}/>
             </Sidepane>
             <Box width={1}>
@@ -81,7 +122,7 @@ export const Root = props =>
                   content='React, less prose, more codes.'/>
             <meta name='twitter:image' content='https://jxnblk.com/mdx-go/card.png'/>
         </Head>
-        <StyleProvider color={theme.lightgray}>
+        <StyleProvider color={theme.colors.lightgray}>
             <PageLayout {...props} />
         </StyleProvider>
     </React.Fragment>
@@ -142,7 +183,7 @@ export const Banner = props =>
     <Box
         {...props}
         color={theme.colors.white}
-        bg={theme.colors.black}
+        bg={theme.colors.primary}
         css={{
             display: 'flex',
             backgroundSize: 'cover',
@@ -229,8 +270,8 @@ export const Button = props =>
         px={4}
         py={3}
         fontSize={2}
-        color={black}
-        bg={blue}
+        color={props.hasOwnProperty('invert') ? theme.colors.black: theme.colors.white}
+        bg={props.hasOwnProperty('invert') ? theme.colors.lighter: theme.colors.primary}
         {...props}
         css={{
             display: 'inline-block',
@@ -244,10 +285,11 @@ export const Button = props =>
 export const ButtonOutline = props =>
     <Button
         {...props}
-        color={green}
+        color={props.hasOwnProperty('invert') ? theme.colors.white: theme.colors.black}
         bg='transparent'
-        css={{
-            boxShadow: 'inset 0 0 0 2px'
+        style={{
+            boxShadow: 'inset 0 0 0 2px',
+            border: `1px solid {props.hasOwnProperty('invert') ? theme.colors.white: theme.colors.black}`
         }}
     />
 

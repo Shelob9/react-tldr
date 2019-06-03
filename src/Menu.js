@@ -15,9 +15,8 @@ function SingleMenuItem(path, name, goLinkStyle) {
 function MenuSection({children}){
     return <Box ml={1}>{children}</Box>
 }
-export const Menu = ({nav, goLinkStyle,dark,c}) => {
-    console.log(c);
-    const linkStyle = {...goLinkStyle, color: dark ? theme.colors.primaryCompliment : theme.colors.white };
+export const Menu = ({nav, goLinkStyle,dark}) => {
+    const linkStyle = {...goLinkStyle, color: dark ? theme.colors.black : theme.colors.white };
     return(
         <Fragment>
             {nav.map(({name, path, children}) => {
@@ -82,7 +81,7 @@ export const Menu = ({nav, goLinkStyle,dark,c}) => {
             })}
         </Fragment>
     );
-}
+};
 
 Menu.defaultProps = {
     goLinkStyle: {
@@ -96,4 +95,4 @@ Menu.defaultProps = {
         paddingBottom: 4,
         color: 'white'
     }
-}
+};

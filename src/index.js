@@ -15,6 +15,7 @@ import {
 	Divider,
 	ExternalLink,
 	CatLogo,
+	Colors,
 	theme
 } from './components';
 export { Root } from './components';
@@ -35,15 +36,12 @@ export default props => (
 		<Banner>
 			<Flex px={3} py={2}>
 				<Box mx="auto" />
-				<Link
+				<ButtonOutline
 					href="/sections"
-					fontSize={1}
-					px={3}
-					py={2}
-					light={true}
+					invert
 				>
 					Start
-				</Link>
+				</ButtonOutline>
 			</Flex>
 			<Flex
 				mx="auto"
@@ -60,10 +58,10 @@ export default props => (
 					<CatLogo size={96} />
 					<Title mb={2} color={theme.colors.primary}> React TL;DR</Title>
 					<Text mb={3}>Josh's React Cheat sheets and such</Text>
-					<Button mr={3} href="/sections">
+					<Button mr={3} href="/sections" invert>
 						Start
 					</Button>
-					<ButtonOutline href={github}>GitHub</ButtonOutline>
+					<ButtonOutline href={github} invert>GitHub</ButtonOutline >
 				</Box>
 				<Box px={3} width={[1, null, 2 / 3, 2 / 3]}>
 					<iframe
@@ -130,6 +128,7 @@ export default props => (
 
 			</Flex>
 			<Divider />
+			<Colors/>
 		</Container>
 	</Box>
 );
